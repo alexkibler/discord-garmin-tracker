@@ -1,0 +1,13 @@
+services:
+  bot:
+    build: .
+    image: discord-garmin-tracker
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persists guild config (channel/role selections) across restarts
+      - bot_data:/data
+
+volumes:
+  bot_data:
